@@ -5,13 +5,23 @@ const data = [
     height: 100,
     fill: "green",
   },
+  {
+    width: 100,
+    height: 60,
+    fill: "pink",
+  },
+  {
+    width: 50,
+    height: 30,
+    fill: "red",
+  },
 ];
 
 // SVG
 const svg = d3.select("svg");
 
 const rect = svg
-  .select("rect")
+  .selectAll("rect")
   .data(data)
   .attr("width", (data, index, selection) => data.width)
   .attr("height", (data) => data.height)
