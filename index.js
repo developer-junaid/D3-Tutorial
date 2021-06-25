@@ -20,11 +20,19 @@ const data = [
 // SVG
 const svg = d3.select("svg");
 
-const rect = svg
-  .selectAll("rect")
-  .data(data)
+// Join data to rects
+const rects = svg.selectAll("rect").data(data);
+
+// add attrs to rects already in the dom
+rects
   .attr("width", (data, index, selection) => data.width)
   .attr("height", (data) => data.height)
   .attr("fill", (data) => data.fill);
 
-console.log(rect);
+// Create virtual elements if they aren't there for the data
+rects
+  .enter()
+  .append("rect")
+  .attr("width", (data, index, selection) => data.width)
+  .attr("height", (data) => data.height)
+  .attr("fill", (data) => data.fill);
